@@ -1,4 +1,4 @@
-# Split-Merge-C
+# Split and Merge Segmentation
 Implementation of split and merge segmentation in C.
 
 ### How to Use
@@ -11,6 +11,13 @@ Compile: `./build.sh`
 Run: `./bin/main [source filename] [output filename] [tolerance]`
 
 ### Examples
+Example of the split and merge steps using a tolerance of 200:
+
+Split | Merge
+:----:|:-----:
+![split](images/split.png) | ![merge](images/t200.png)
+
+Example of different tolerance values:
 
 source | 50 | 100 | 150 | 200 | 250
 :-----:|:--:|:---:|:---:|:---:|:--:

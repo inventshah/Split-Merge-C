@@ -58,9 +58,6 @@ Element *tree_to_list(Element *first, Node *root)
 
 int8_t touching(Element *one, Element *two)
 {
-	//int8_t first = (one->x <= two->x && two->x <= one->x + one->width) || (one->x <= two->x + two->width && two->x + two->width <= one->x + one->width);
-	//return first && (one->y == two->y || one->y + one->height == two->y);
-
 	if (one->y == two->y || one->y == two->height + two->y)
 	{
 		return ((one->x >= two->x && one->x <= two->x + two->width) || (two->x >= one->x && two->x <= one->x + one->width));
@@ -71,9 +68,6 @@ int8_t touching(Element *one, Element *two)
 	}
 
 	return 0;
-
-	//return (one->x <= two->x && two->x <= one->x + one->width) || (one->x <= two->x + two->width && two->x + two->width <= one->x + one->width) && (one->y == two->y || one->y + one->height == two->y);
-	//return ((one->x <= two->x || one->y <= one->y) && (two->x <= one->x + one->width || two->y <= one->y + one->height));
 }
 
 uint32_t element_distance(Element *element, Group *group)

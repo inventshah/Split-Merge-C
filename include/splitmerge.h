@@ -6,13 +6,16 @@
 #define _SPLITMERGE_H
 
 #include "node.h"
+#include "group.h"
 
 #include <png.h>
 #include <stdint.h>
 
 uint8_t random_255(void);
 
-void colorize(Image *img, Node *node);
+void colorize_nodes(Image *img, Node *node);
+void colorize_groups(Image *img, Group *group);
+
 void segment(Image *img, uint32_t tolerance);
 
 #endif

@@ -43,14 +43,18 @@ uint32_t node_distance(Node *one, Node *two)
 void split_node(Node *node, uint32_t tolerance, Image *img)
 {
 	uint32_t half_width, half_height;
+	uint8_t offset_x, offset_y;
 
 	half_width = node->width / 2;
 	half_height = node->height / 2;
 
-	node->top_left     = add_node(node, node->x             , node->y              , half_width, half_height, tolerance, img);
-	node->top_right    = add_node(node, node->x + half_width, node->y              , half_width, half_height, tolerance, img);
-	node->bottom_left  = add_node(node, node->x             , node->y + half_height, half_width, half_height, tolerance, img);
-	node->bottom_right = add_node(node, node->x + half_width, node->y + half_height, half_width, half_height, tolerance, img);
+	offset_x = node->width % 2;
+	offset_y = node->height % 2;
+
+	node->top_left     = add_node(node, node->x                        , node->y                         , half_width           , half_height           , tolerance, img);
+	node->top_right    = add_node(node, node->x + half_width, node->y                         , half_width + offset_x, half_height           , tolerance, img);
+	node->bottom_left  = add_node(node, node->x                        , node->y + half_height, half_width           , half_height + offset_y, tolerance, img);
+	node->bottom_right = add_node(node, node->x + half_width, node->y + half_height, half_width + offset_x, half_height + offset_y, tolerance, img);
 }
 
 Node *add_node(Node *parent, uint32_t x, uint32_t y, uint32_t width, uint32_t height, uint32_t tolerance, Image *img)
@@ -100,16 +104,19 @@ int8_t is_node_homogeneous(Node *node, uint32_t tolerance, Image *img)
 		for (y = node->y; y < upper_y; y++)
 		{
 			rgb = get_rgb(img, x, y);
-			current_distance = rgb_distance(rgb);
+			if (rgb != NULL)
+			{
+				current_distance = rgb_distance(rgb);
 
-			red += rgb[0];
-			green += rgb[1];
-			blue += rgb[2];
+				red += gamma_correct(rgb[0]);
+				green += gamma_correct(rgb[1]);
+				blue += gamma_correct(rgb[2]);
 
-			if (min_distance > current_distance) min_distance = current_distance;
-			if (max_distance < current_distance) max_distance = current_distance;
+				if (min_distance > current_distance) min_distance = current_distance;
+				if (max_distance < current_distance) max_distance = current_distance;
 
-			count++;
+				count++;
+			}
 		}
 	}
 
