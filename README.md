@@ -8,9 +8,7 @@ Clone: `git clone https://github.com/inventshah/Split-Merge-C.git`
 
 Compile: `./build.sh`
 
-Save an image as `source.png` in the `Split-Merge-C` folder.
-
-Run: `./bin/main`
+Run: `./bin/main [source filename] [output filename] [tolerance]`
 
 ### Examples
 

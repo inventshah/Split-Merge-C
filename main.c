@@ -10,11 +10,17 @@
 
 int main(int argc, char **argv)
 {
-	Image *img = open_image("source.png");
+	Image *img = NULL;
+	char *source, *save;
+	uint32_t tolerance;
 
-	segment(img, 100);
+	if (argc < 4) error("Too few command line arguments. Need [source filename] [output filename] [tolerance].");
 
-	save_image(img, "output.png");
+	img = open_image(argv[1]);
+	tolerance = atoi(argv[3]);
+
+	segment(img, tolerance);
+	save_image(img, argv[2]);
 
 	img = free_image(img);
 
