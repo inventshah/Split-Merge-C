@@ -22,6 +22,7 @@ add_library(${PROJECT_NAME} SHARED
 	${PROJECT_SOURCE_DIR}/src/utils.c
 	${PROJECT_SOURCE_DIR}/src/splitmerge.c
 	${PROJECT_SOURCE_DIR}/src/node.c
+	${PROJECT_SOURCE_DIR}/src/group.c
 )
 
 target_link_libraries(${PROJECT_NAME} PNG::PNG)
