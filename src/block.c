@@ -35,7 +35,9 @@ Block *add_block(Block *last, uint32_t x, uint32_t y, uint32_t width, uint32_t h
 	ptr->y = y;
 	ptr->width = width;
 	ptr->height = height;
-	ptr->homogeneous = 0;
+	ptr->red = 0;
+	ptr->green = 0;
+	ptr->blue = 0;
 	ptr->previous = last;
 	ptr->next = NULL;
 

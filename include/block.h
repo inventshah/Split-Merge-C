@@ -17,7 +17,9 @@ struct block
 	uint32_t y;
 	uint32_t width;
 	uint32_t height;
-	int8_t homogeneous;
+	uint8_t red;
+	uint8_t green;
+	uint8_t blue;
 	struct block *previous;
 	struct block *next;
 };
