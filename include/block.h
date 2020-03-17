@@ -10,6 +10,7 @@
 #include <stdint.h>
 
 #define HOMOGENEOUS 1
+#define NOT_HOMOGENEOUS 0
 
 struct block
 {

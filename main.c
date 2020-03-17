@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 
 	segment(img, 100);
 
-	save_image(img, "test.png");
+	save_image(img, "output.png");
 
 	img = free_image(img);
 
